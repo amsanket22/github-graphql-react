@@ -16,11 +16,13 @@ const ListRepositories: React.FC = () => {
   const [repos, setRepos] = useState<Array<Repository>>([]);
   const [total, setTotal] = useState(0);
   const [from, setFrom] = useState(1);
-  const [to, setTo] = useState(10);
+  const [to, setTo] = useState(20);
 
   useEffect(() => {
     if (data) {
       const repos = data.search.edges.map((edge: any) => edge.node);
+      console.log(repos);
+
       setTotal(data.search.repositoryCount);
       setRepos(repos);
       setPageInfo(data.search.pageInfo);
@@ -49,7 +51,7 @@ const ListRepositories: React.FC = () => {
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
-                  <tr>
+                  <tr key="something">
                     <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                       Github ID
                     </th>
