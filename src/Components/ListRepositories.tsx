@@ -21,8 +21,6 @@ const ListRepositories: React.FC = () => {
   useEffect(() => {
     if (data) {
       const repos = data.search.edges.map((edge: any) => edge.node);
-      console.log(repos);
-
       setTotal(data.search.repositoryCount);
       setRepos(repos);
       setPageInfo(data.search.pageInfo);
