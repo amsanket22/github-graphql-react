@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, renderHook, screen } from '@testing-library/react';
 import App from './App';
 import { MockedProvider } from '@apollo/client/testing';
 import ListRepositories from './Components/ListRepositories';
@@ -20,7 +20,7 @@ const repoMock = {
           'hasNextPage': true,
           'endCursor': 'Y3Vyc29yOjIw'
         },
-        'repositoryCount': 159,
+        'repositoryCount': 2,
         'edges': [
           {
             'node': {
@@ -47,6 +47,16 @@ const repoMock = {
   }
 };
 
+const errorMock = {
+  request: {
+    query: LOAD_REPOSITORIES,
+    variables: {
+      after: 123
+    }
+  },
+  error: new Error('An error occurred')
+};
+
 test('renders learn react link', () => {
   render(<App />);
   const linkElement = screen.getByText('Loading...');
@@ -61,6 +71,16 @@ it('renders without error', async () => {
   );
   expect(await screen.findByText('Loading...')).toBeInTheDocument();
   expect(await screen.findByText('facebook/react')).toBeInTheDocument();
+  expect(await screen.findByText('MDEwOlJlcG9zaXRvcnkxMzU3ODYwOTM=')).toBeInTheDocument();
 
   // expect()
+});
+
+it('errors on invalid query', async () => {
+  render(
+    <MockedProvider mocks={[errorMock]}>
+      <ListRepositories />
+    </MockedProvider>
+  );
+  expect(await screen.findByText('Error')).toBeInTheDocument();
 });

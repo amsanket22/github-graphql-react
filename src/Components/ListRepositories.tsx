@@ -82,7 +82,7 @@ const ListRepositories: React.FC = () => {
           </div>
         </div>
       </div>
-      <Pagination from={from} to={to} total={total} />
+      <Pagination total={total} />
     </div>
   );
 };

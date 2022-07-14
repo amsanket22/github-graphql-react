@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Pagination = ({ from, to, total }: PaginationProps) => {
+const Pagination = ({ total }: PaginationProps) => {
   const next = () => {};
 
   const previous = () => {};
@@ -8,9 +8,7 @@ const Pagination = ({ from, to, total }: PaginationProps) => {
     <div className="flex items-center justify-between py-3 bg-white border-gray-200">
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-700">
-            Showing {from} to {to} of {total} results
-          </p>
+          <p className="text-sm text-gray-700">TOTAL : {total} results</p>
         </div>
         <div>
           <nav className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
@@ -62,8 +60,6 @@ const Pagination = ({ from, to, total }: PaginationProps) => {
 };
 
 interface PaginationProps {
-  from: number;
-  to: number;
   total: number;
 }
 

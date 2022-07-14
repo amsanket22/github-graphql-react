@@ -46,5 +46,24 @@
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "server/src/config",
+      "store.js",
+      "index.jsx",
+      "index.js",
+      "src/reportWebVitals.ts",
+      "tests"
+    ],
+    "watchPathIgnorePatterns": [
+      "node_modules",
+      "server/src/config",
+      "store.js",
+      "index.jsx",
+      "index.js",
+      "tests"
+    ]
   }
 }
