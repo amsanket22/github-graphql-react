@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
 const Pagination = ({ from, to, total }: PaginationProps) => {
+  const next = () => {};
+
+  const previous = () => {};
   return (
     <div className="flex items-center justify-between py-3 bg-white border-gray-200">
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
@@ -11,7 +14,10 @@ const Pagination = ({ from, to, total }: PaginationProps) => {
         </div>
         <div>
           <nav className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-            <a className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50">
+            <a
+              onClick={previous}
+              className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50"
+            >
               <span className="sr-only">Previous</span>
               <svg
                 className="w-5 h-5"
@@ -28,7 +34,11 @@ const Pagination = ({ from, to, total }: PaginationProps) => {
               </svg>
             </a>
 
-            <a className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50">
+            <a
+              onClick={next}
+              href="#"
+              className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50"
+            >
               <span className="sr-only">Next</span>
               <svg
                 className="w-5 h-5"

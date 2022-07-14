@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# React + Graphql along with typescript
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Create .env in project's root folder and add you github's access token against ```REACT_APP_GITHUB_TOKEN``` key
 
 this project uses github graphql api to pull react related popular libraries
- 
+
 --------------------------------
 ## main features
 #### react with typescript
