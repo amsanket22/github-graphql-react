@@ -1,12 +1,18 @@
 import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { LOAD_REPOSITORIES } from '../GraphQl/Queries';
+import { PageInfo } from '../types/PageInfo';
 import { Repository } from '../types/Repository';
 import Loader from './Loader';
 import Pagination from './Pagination';
 
 const ListRepositories: React.FC = () => {
-  const { error, loading, data } = useQuery(LOAD_REPOSITORIES);
+  const [pageInfo, setPageInfo] = useState<PageInfo>();
+  const { error, loading, data } = useQuery(LOAD_REPOSITORIES, {
+    variables: {
+      after: null // make this dynamic to load next page
+    }
+  });
   const [repos, setRepos] = useState<Array<Repository>>([]);
   const [total, setTotal] = useState(0);
   const [from, setFrom] = useState(1);
@@ -17,6 +23,7 @@ const ListRepositories: React.FC = () => {
       const repos = data.search.edges.map((edge: any) => edge.node);
       setTotal(data.search.repositoryCount);
       setRepos(repos);
+      setPageInfo(data.search.pageInfo);
     }
   }, [data]);
 
