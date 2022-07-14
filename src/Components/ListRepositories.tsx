@@ -3,14 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { LOAD_REPOSITORIES } from '../GraphQl/Queries';
 import { Repository } from '../types/Repository';
 import Loader from './Loader';
+import Pagination from './Pagination';
 
 const ListRepositories: React.FC = () => {
   const { error, loading, data } = useQuery(LOAD_REPOSITORIES);
   const [repos, setRepos] = useState<Array<Repository>>([]);
+  const [total, setTotal] = useState(0);
+  const [from, setFrom] = useState(1);
+  const [to, setTo] = useState(10);
 
   useEffect(() => {
     if (data) {
       const repos = data.search.edges.map((edge: any) => edge.node);
+      setTotal(data.search.repositoryCount);
       setRepos(repos);
     }
   }, [data]);
@@ -70,6 +75,7 @@ const ListRepositories: React.FC = () => {
           </div>
         </div>
       </div>
+      <Pagination from={from} to={to} total={total} />
     </div>
   );
 };
