@@ -9,7 +9,7 @@ const repoMock = {
   request: {
     query: LOAD_REPOSITORIES,
     variables: {
-      after: null
+      first: 20
     }
   },
   result: {
@@ -18,6 +18,7 @@ const repoMock = {
         'pageInfo': {
           'startCursor': 'Y3Vyc29yOjE=',
           'hasNextPage': true,
+          'hasPreviousPage': false,
           'endCursor': 'Y3Vyc29yOjIw'
         },
         'repositoryCount': 2,
