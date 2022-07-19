@@ -25,6 +25,13 @@ In the project directory, you can run:
 
 ### `npm test`
 
+## Docker Image
+
+`docker run -p 3005:3000 -e REACT_APP_GITHUB_TOKEN={your-github-token} -it amsainfotech/react-github-graphql:1.0.2
+`
+
+other versions are availble for ARM platform as well
+
 
 
 
