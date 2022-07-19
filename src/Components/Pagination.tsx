@@ -1,9 +1,12 @@
-import { useState } from 'react';
+const Pagination = ({ total, onNextPage, onPreviousPage, hasPreviousPage, hasNextPage }: PaginationProps) => {
+  const next = () => {
+    onNextPage();
+  };
 
-const Pagination = ({ total }: PaginationProps) => {
-  const next = () => {};
+  const previous = () => {
+    onPreviousPage();
+  };
 
-  const previous = () => {};
   return (
     <div className="flex items-center justify-between py-3 bg-white border-gray-200">
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
@@ -12,9 +15,10 @@ const Pagination = ({ total }: PaginationProps) => {
         </div>
         <div>
           <nav className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-            <a
+            <button
+              disabled={!hasPreviousPage}
               onClick={previous}
-              className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50"
+              className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-white bg-blue-600 border border-gray-300 disabled:opacity-75 rounded-l-md hover:bg-blue-800 disabled:hover:bg-blue-600"
             >
               <span className="sr-only">Previous</span>
               <svg
@@ -30,12 +34,12 @@ const Pagination = ({ total }: PaginationProps) => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </button>
 
-            <a
+            <button
+              disabled={!hasNextPage}
               onClick={next}
-              href="#"
-              className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50"
+              className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-white bg-blue-600 border border-gray-300 disabled:opacity-50 rounded-r-md hover:bg-blue-800 disabled:hover:bg-blue-600"
             >
               <span className="sr-only">Next</span>
               <svg
@@ -51,7 +55,7 @@ const Pagination = ({ total }: PaginationProps) => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </button>
           </nav>
         </div>
       </div>
@@ -61,6 +65,10 @@ const Pagination = ({ total }: PaginationProps) => {
 
 interface PaginationProps {
   total: number;
+  hasNextPage: boolean | undefined;
+  hasPreviousPage: boolean | undefined;
+  onNextPage: () => void;
+  onPreviousPage: () => void;
 }
 
 export default Pagination;

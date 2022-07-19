@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { LOAD_REPOSITORIES } from '../GraphQl/Queries';
 import { PageInfo } from '../types/PageInfo';
@@ -8,15 +8,16 @@ import Pagination from './Pagination';
 
 const ListRepositories: React.FC = () => {
   const [pageInfo, setPageInfo] = useState<PageInfo>();
-  const { error, loading, data } = useQuery(LOAD_REPOSITORIES, {
-    variables: {
-      after: null // make this dynamic to load next page
-    }
+
+  const [getRositories, { error, loading, data, refetch }] = useLazyQuery(LOAD_REPOSITORIES, {
+    notifyOnNetworkStatusChange: true
   });
   const [repos, setRepos] = useState<Array<Repository>>([]);
   const [total, setTotal] = useState(0);
-  const [from, setFrom] = useState(1);
-  const [to, setTo] = useState(20);
+
+  useEffect(() => {
+    getRositories();
+  });
 
   useEffect(() => {
     if (data) {
@@ -25,7 +26,29 @@ const ListRepositories: React.FC = () => {
       setRepos(repos);
       setPageInfo(data.search.pageInfo);
     }
-  }, [data]);
+  }, [data, pageInfo]);
+
+  const goToNextPage = () => {
+    if (pageInfo?.hasNextPage) {
+      refetch({
+        after: pageInfo.endCursor,
+        first: 20,
+        last: null,
+        before: null
+      });
+    }
+  };
+
+  const goToPreviousPage = () => {
+    if (pageInfo?.hasPreviousPage) {
+      refetch({
+        before: pageInfo.startCursor,
+        last: 20,
+        first: null,
+        after: null
+      });
+    }
+  };
 
   if (loading) {
     return <Loader type="processing" />;
@@ -41,6 +64,7 @@ const ListRepositories: React.FC = () => {
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">React Repos</h1>
           <p className="mt-2 text-sm text-gray-700">A list react related repos</p>
+          <p>{JSON.stringify(pageInfo)}</p>
         </div>
       </div>
       <div className="flex flex-col mt-8">
@@ -82,7 +106,13 @@ const ListRepositories: React.FC = () => {
           </div>
         </div>
       </div>
-      <Pagination total={total} />
+      <Pagination
+        hasNextPage={pageInfo?.hasNextPage}
+        hasPreviousPage={pageInfo?.hasPreviousPage}
+        total={total}
+        onNextPage={() => goToNextPage()}
+        onPreviousPage={() => goToPreviousPage()}
+      />
     </div>
   );
 };
