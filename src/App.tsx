@@ -1,14 +1,11 @@
-import { ApolloProvider } from '@apollo/client';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import ListRepositories from './Components/ListRepositories';
-import client from './GraphQl/Client';
+import Main from './Components/layout/Main';
+import AboutUs from './Pages/AboutUs';
+import Contact from './Pages/Contact';
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <ListRepositories></ListRepositories>
-    </ApolloProvider>
-  );
+  return <Main></Main>;
 }
 
 export default App;
