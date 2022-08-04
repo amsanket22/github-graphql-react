@@ -108,8 +108,7 @@ export default function Footer() {
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <img className="h-10" src={logo} alt="Company name" />
-            <p className="text-base text-gray-500">Hitachi Transport System Group</p>
+            <img src={logo} alt="Company name" />
             {/* <div className="flex space-x-6">
                             {navigation.social.map((item) => (
                                 <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
