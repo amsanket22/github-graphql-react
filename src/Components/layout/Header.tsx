@@ -25,21 +25,78 @@ const Header: React.FC = () => {
     {
       name: 'Internal 1',
       description: 'Get a better understanding of where your traffic is coming from.',
-      href: '#',
+      href: 'about',
       icon: ChartBarIcon
     },
     {
       name: 'Internal 2',
       description: 'Get a better understanding of where your traffic is coming from.',
-      href: '#',
+      href: 'about',
       icon: ChartBarIcon
     },
     {
       name: 'Internal 3',
       description: 'Get a better understanding of where your traffic is coming from.',
-      href: '#',
+      href: 'about',
       icon: ChartBarIcon
     }
+  ];
+
+  const industries = [
+    {
+      name: 'Automotive',
+      description: '',
+      href: 'automotive',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Telecom',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Consumer Durables',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Engineering',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Industrial',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Healthcare',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'FMCG',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Chemical',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
+    {
+      name: 'Retail',
+      description: '',
+      href: '#',
+      icon: ChartBarIcon
+    },
   ];
   const callsToAction = [
     { name: 'Watch Demo', href: '#', icon: PlayIcon },
@@ -85,7 +142,7 @@ const Header: React.FC = () => {
             <div className="flex items-center justify-between py-6 border-b-2 border-gray-100 md:justify-start md:space-x-10">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <a href="/">
-                  <img className="w-auto h-14" src={logo} alt="" />
+                  <img className="w-auto h-14 lg:scale-150" src={logo} alt="" />
                 </a>
               </div>
               <div className="-my-2 -mr-2 md:hidden">
@@ -185,13 +242,13 @@ const Header: React.FC = () => {
                         >
                           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                             <div className="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
-                              {resources.map(item => (
+                              {industries.map(item => (
                                 <a
                                   key={item.name}
                                   href={item.href}
                                   className="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50"
                                 >
-                                  <item.icon className="flex-shrink-0 w-6 h-6 text-indigo-600" aria-hidden="true" />
+                                  {/* <item.icon className="flex-shrink-0 w-6 h-6 text-indigo-600" aria-hidden="true" /> */}
                                   <div className="ml-4">
                                     <p className="text-base font-medium text-gray-900">{item.name}</p>
                                     <p className="mt-1 text-sm text-gray-500">{item.description}</p>
@@ -199,26 +256,7 @@ const Header: React.FC = () => {
                                 </a>
                               ))}
                             </div>
-                            <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
-                              <div>
-                                <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">Recent Posts</h3>
-                                <ul className="mt-4 space-y-4">
-                                  {recentPosts.map(post => (
-                                    <li key={post.id} className="text-base truncate">
-                                      <a href={post.href} className="font-medium text-gray-900 hover:text-gray-700">
-                                        {post.name}
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div className="mt-5 text-sm">
-                                <a href="www.amsainfotech.com" className="font-medium text-indigo-600 hover:text-indigo-500">
-                                  {' '}
-                                  View all posts <span aria-hidden="true">&rarr;</span>
-                                </a>
-                              </div>
-                            </div>
+
                           </div>
                         </Popover.Panel>
                       </Transition>
