@@ -142,7 +142,7 @@ const Header: React.FC = () => {
             <div className="flex items-center justify-between py-6 border-b-2 border-gray-100 md:justify-start md:space-x-10">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <a href="/">
-                  <img className="w-auto h-14" src={logo} alt="" />
+                  <img className="w-auto h-14 lg:scale-150" src={logo} alt="" />
                 </a>
               </div>
               <div className="-my-2 -mr-2 md:hidden">
