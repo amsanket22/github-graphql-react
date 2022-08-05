@@ -8,7 +8,7 @@ const AboutUs = () => {
   return (
     <div>
       <img src={banner} className="w-full" alt="" />
-      <nav className="flex px-5 py-3 text-black border border-gray-200 bg-[#ececec] pl-[21.87rem]" aria-label="Breadcrumb">
+      <nav className="flex px-5 py-3 text-black border border-gray-200 bg-[#ececec] md:pl-[21.87rem]" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
           <li className="inline-flex items-center">
             <a className="inline-flex items-center text-sm font-medium text-black hover:text-gray-900 ">
@@ -36,6 +36,8 @@ const AboutUs = () => {
 
       <div className="relative max-w-[90rem] mx-auto p-4">
         <div className='py-4 mt-12 max-w-[60rem] border-l-4 border-l-orange-600'>
+          <img src={image3} alt="" className='pb-6 pl-4' />
+
           <p className='ml-4 text-5xl font-medium'>
             Flyjac Logistics, a Group Company of
             Hitachi Transport System Japan is a

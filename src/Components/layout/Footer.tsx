@@ -12,7 +12,7 @@ const navigation = {
     { name: 'Cold Chain', href: '#' }
   ],
   industry: [
-    { name: 'Automotive', href: '#' },
+    { name: 'Automotive', href: 'automotive' },
     { name: 'Telecom', href: '#' },
     { name: 'Consumer Durables', href: '#' },
     { name: 'Engineering', href: '#' },
