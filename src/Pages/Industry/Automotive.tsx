@@ -192,7 +192,7 @@ const Automotive = () => {
                 <img src={clients} alt="" className='m-auto' />
             </section>
 
-            {/* connet with us section */}
+            {/* connect with us section */}
             <section id='connect-us' className='py-24 mx-auto align-middle bg-gray-100'>
                 <div className='text-center'>
                     <div className='pb-16 text-4xl text-[#4AAF70] uppercase'>Connect <span className='font-bold'>With Us</span></div>
