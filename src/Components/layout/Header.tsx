@@ -23,9 +23,9 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
   const solutions = [
     {
-      name: 'Internal 1',
+      name: 'Global Forwarding',
       description: 'Get a better understanding of where your traffic is coming from.',
-      href: 'about',
+      href: '/global-forwarding',
       icon: ChartBarIcon
     },
     {
